@@ -36,4 +36,12 @@ div {
   &.field, &.actions {
     margin-bottom: 10px;
   }
+
+.favorite-btn{
+  color: red;
+}
+
+.unfavorite-btn{
+  color: blue;
+}
 }

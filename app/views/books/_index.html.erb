@@ -19,11 +19,11 @@
         <td>
           <% if book.favorited_by?(current_user) %>
             <p>
-              <%= link_to "♥#{book.favorites.count}", book_favorites_path(book), method: :delete %>
+              <%= link_to "♥#{book.favorites.count}", book_favorites_path(book), method: :delete ,class: "favorite-btn"%>
             </p>
           <% else %>
             <p>
-              <%= link_to "♥#{book.favorites.count}", book_favorites_path(book), method: :post %>
+              <%= link_to "♥#{book.favorites.count}", book_favorites_path(book), method: :post, class: "unfavorite-btn"%>
             </p>
           <% end %>
         </td>
