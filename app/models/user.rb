@@ -26,6 +26,22 @@ class User < ApplicationRecord
     followings.include?(user)
   end
 
+# search_model
+ def self.looks(search, word)
+   if search == "perfect_match"
+     @user = User.where("name LIKE?", "#{word}")
+   elsif search == "forward_match"
+     @user = User.where("name LIKE?", "#{word}%")
+   elsif search == "backword_match"
+     @user = User.where("name LIKE?", "%#{word}")
+   elsif search == "partial_match"
+     @user = User.where("name LIKE?", "%#{word}%")
+   else
+     @user = User.all
+   end
+ end
+
+
   validates :name, length: {maximum: 20, minimum: 2}, uniqueness: true
   validates :introduction, length: { maximum: 50 }
 end
