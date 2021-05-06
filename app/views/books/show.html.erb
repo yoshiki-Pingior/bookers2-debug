@@ -17,10 +17,8 @@
           </td>
           <td><%= link_to @book.title, book_path(@book) %></td>
           <td><%= @book.body %></td>
-            <td class="favorite-btn"><%= render "favorites/favorite-btn", book: @book %></td>
-          <td>
-            <p>コメント数：<%= @book.book_comments.count %></p>
-          </td>
+            <td class="favorite-btn-<%= @book.id %>"><%= render "favorites/favorite-btn", book: @book %></td>
+          <td class="comment-count">コメント数：<%= @book.book_comments.count %></td>
           <% if @book.user == current_user %>
           <td><%= link_to 'Edit', edit_book_path(@book), class: "btn btn-sm btn-success edit_book_#{@book.id}" %></td>
           <td><%= link_to 'Destroy', book_path(@book), method: :delete, data: { confirm: '本当に消しますか？' }, class: "btn btn-sm btn-danger destroy_book_#{@book.id}"%></td>
@@ -28,7 +26,14 @@
         </tr>
       </table>
 <!--課題6変更-->
-      <%= render "books/comment", book: @book,book_comment: @book_comment %>
+      <div class="book-comment-<%= @book.id %>"><%= render "book_comments/comment", book: @book,book_comment: @book_comment %></div>
+    
+    　<%= form_with(model:[@book, @book_comment]) do |f| %>
+      　<%= f.text_area :comment, :size => "90x5"%>
+    　　<div class="form-group">
+      　　<%= f.submit "送信" %>
+    　　</div>
+    <% end %>
     </div>
   </div>
 </div>
