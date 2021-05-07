@@ -12,6 +12,25 @@
           <%= f.label :email %><br />
           <%= f.email_field :email, autofocus: true, class: "email" %>
         </div>
+        
+        <!--jpostal.jpとgem jp_prefecture-->
+        <div class="field">
+          <%= f.label :postal_code %><br>
+          <%= f.text_field :postal_code, autofocus: true, class: "postal_code" %>
+        </div>
+        <div class="field">
+          <%= f.label :prefecture_name %><br>
+          <%= f.collection_select :prefecture_code, JpPrefecture::Prefecture.all, :code, :name, {prompt: '選択してください'}, class: "prefecture_name"%>
+        </div>
+        <div class="field">
+          <%= f.label :City %><br>
+          <%= f.text_field :address_city, autofocus: true, class: "address_city" %>
+        </div>
+        <div class="field">
+          <%= f.label :Street %><br>
+          <%= f.text_field :address_street, autofocus: true, class: "address_street" %>
+        </div>
+        
         <div class="field">
           <%= f.label :password %>
           <% if @minimum_password_length %>
