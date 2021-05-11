@@ -73,3 +73,7 @@ gem 'bootstrap', '~> 4.5'
 gem 'jquery-rails'
 
 gem 'jp_prefecture'
+
+group :development do
+  gem "letter_opener"
+end
